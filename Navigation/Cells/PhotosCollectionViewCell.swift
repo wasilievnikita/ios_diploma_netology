@@ -65,5 +65,5 @@ class PhotosCollectionViewCell: UICollectionViewCell {
     @objc private func tapAction() {
         delegate?.imageCellTaped(photo.image, frameImage: photo.frame, indexPath: indexPathCell)
     }
-
-    }
+    
+}

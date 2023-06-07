@@ -208,7 +208,7 @@ class ProfileHeaderView: UIView {
     
     @objc private func tapAction() {
         UIView.animateKeyframes(withDuration: 0.8, delay: 0) {
-
+            
             UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 0.5) {
                 self.backView.isHidden = false
                 self.widthImageView.constant = UIScreen.main.bounds.width - 20
@@ -217,7 +217,7 @@ class ProfileHeaderView: UIView {
                 self.heightImageView.constant = UIScreen.main.bounds.width - 20
                 self.heightBackView.constant =  UIScreen.main.bounds.height
                 self.photo.layer.cornerRadius = 0
-              
+                
             }
             UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.8) {
                 self.closeAvatar.layer.opacity = 1
@@ -241,7 +241,7 @@ class ProfileHeaderView: UIView {
                 self.photo.layer.cornerRadius = 65
                 self.widthImageView.constant = 130
                 self.leadingImageView.constant = 16
-              
+                
                 self.topImageView.constant = 16
                 self.heightImageView.constant = 130
                 self.heightBackView.constant =  UIScreen.main.bounds.height

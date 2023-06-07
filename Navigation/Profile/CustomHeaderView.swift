@@ -22,26 +22,12 @@ final class CustomHeaderView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .black
-//        layout()
+        
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-//
-//    func setupHeader(text: String) {
-//        headerTextLabel.text = text
-//    }
-//
-//    private func layout() {
-//        addSubview(headerTextLabel)
-//
-//        NSLayoutConstraint.activate([
-//            headerTextLabel.topAnchor.constraint(equalTo: topAnchor, constant: 15),
-//            headerTextLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15),
-//            headerTextLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -15),
-//            headerTextLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15)
-//        ])
-//    }
+    
 }
 

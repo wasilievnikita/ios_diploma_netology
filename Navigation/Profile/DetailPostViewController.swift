@@ -8,9 +8,9 @@
 import UIKit
 
 class DetailPostViewController: UIViewController {
-
+    
     weak var delegate: PlusLike?
-
+    
     private var indexPathCell = IndexPath()
     
     func setIndexPath(indexPath: IndexPath) {
@@ -49,7 +49,7 @@ class DetailPostViewController: UIViewController {
         label.font = UIFont.systemFont(ofSize: 16)
         return label
     }()
-
+    
     private let views: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -71,9 +71,9 @@ class DetailPostViewController: UIViewController {
         like.text = "Likes: " + String(model.likes)
         views.text = "Views: " + String(model.views + 1)
     }
-
-    private func layout() {
     
+    private func layout() {
+        
         [ photo, authorText, descriptionText, like, views].forEach { view.addSubview($0)}
         let inset: CGFloat = 16
         let inset2: CGFloat = 12
@@ -81,7 +81,7 @@ class DetailPostViewController: UIViewController {
         let height : CGFloat = 200
         
         NSLayoutConstraint.activate([
-
+            
             authorText.topAnchor.constraint(equalTo: view.topAnchor, constant: inset),
             authorText.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: inset),
             authorText.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -inset),
@@ -106,5 +106,5 @@ class DetailPostViewController: UIViewController {
             views.heightAnchor.constraint(equalToConstant: heighInset),
             views.bottomAnchor.constraint(equalTo: like.bottomAnchor)
         ])
-        }
+    }
 }

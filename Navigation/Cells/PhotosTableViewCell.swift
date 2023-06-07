@@ -10,8 +10,8 @@ import UIKit
 final class PhotosTableViewCell: UITableViewCell {
     
     let photosViewController =  {
-           PhotosViewController()
-       }()
+        PhotosViewController()
+    }()
     
     private let contentWhiteView: UIView = {
         let view = UIView()
@@ -97,7 +97,7 @@ final class PhotosTableViewCell: UITableViewCell {
     func addViews() {
         [contentWhiteView, imageArrow, photo1, photo2, photo3, photo4, header].forEach { contentView.addSubview($0)}
     }
-
+    
     // MARK: - Making Autolayouts
     
     func layout() {
@@ -105,7 +105,7 @@ final class PhotosTableViewCell: UITableViewCell {
         let inset: CGFloat = 12
         let inset2: CGFloat = 8
         let imageSize: CGFloat = (contentView.bounds.width + 3 * inset2)/4
-
+        
         NSLayoutConstraint.activate([
             contentWhiteView.topAnchor.constraint(equalTo: contentView.topAnchor),
             contentWhiteView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
@@ -141,13 +141,9 @@ final class PhotosTableViewCell: UITableViewCell {
             photo4.leadingAnchor.constraint(equalTo: photo3.trailingAnchor, constant: inset2),
             photo4.bottomAnchor.constraint(equalTo: contentWhiteView.bottomAnchor, constant: -inset),
             photo4.heightAnchor.constraint(equalToConstant: imageSize),
-            photo4.widthAnchor.constraint(equalToConstant: imageSize),          
+            photo4.widthAnchor.constraint(equalToConstant: imageSize),
         ])
     }
-    
-//    let photosViewController =  {
-//           PhotosViewController()
-//       }()
 }
 
 

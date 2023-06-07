@@ -12,7 +12,7 @@ class ProfileViewController: UIViewController, PlusLike{
     var delegate: UITableViewDelegate?
     
     var postFeed = Post.maketPost()
-
+    
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -30,11 +30,11 @@ class ProfileViewController: UIViewController, PlusLike{
         view.backgroundColor = .white
         layout()
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
-           super.viewWillAppear(animated)
-           tableView.reloadData()
-       }
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+    }
     
     // MARK: - Making Autolayouts
     
@@ -71,15 +71,15 @@ extension ProfileViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath.section == 0  {
-                  let cell = tableView.dequeueReusableCell(withIdentifier: PhotosTableViewCell.identifier, for: indexPath) as! PhotosTableViewCell
-                  return cell
-              } else  {
-                  let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.identifier, for: indexPath) as! PostTableViewCell
-                  cell.setupCell(model: posts[indexPath.row])
-                  cell.delegate = self
-                  cell.setIndexPath(indexPath: indexPath)
-                  return cell
-              }
+            let cell = tableView.dequeueReusableCell(withIdentifier: PhotosTableViewCell.identifier, for: indexPath) as! PhotosTableViewCell
+            return cell
+        } else  {
+            let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.identifier, for: indexPath) as! PostTableViewCell
+            cell.setupCell(model: posts[indexPath.row])
+            cell.delegate = self
+            cell.setIndexPath(indexPath: indexPath)
+            return cell
+        }
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -90,7 +90,7 @@ extension ProfileViewController: UITableViewDataSource {
             return nil
         }
     }
-
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
             navigationController?.pushViewController(PhotosViewController(), animated: true)
@@ -110,28 +110,28 @@ extension ProfileViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-            if indexPath.section == 1, editingStyle == .delete {
-                postFeed.remove(at: indexPath.row)
-                tableView.deleteRows(at: [indexPath], with: . automatic)
-                print("Deleted")
-            }
+        if indexPath.section == 1, editingStyle == .delete {
+            postFeed.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: . automatic)
+            print("Deleted")
         }
+    }
 }
 
 // MARK: - Increasing and degreasing likes
 
 extension ProfileViewController {
-
+    
     func increase(model: inout[Post], indexPath: IndexPath) {
         
-            model[indexPath.row].likes += 1
-    
+        model[indexPath.row].likes += 1
+        
     }
-
+    
     func degrease(model: inout[Post], indexPath: IndexPath) {
-       
-            model[indexPath.row].likes -= 1
-       
+        
+        model[indexPath.row].likes -= 1
+        
     }
 }
 

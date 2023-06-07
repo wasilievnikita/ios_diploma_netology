@@ -60,7 +60,7 @@ class PhotosViewController: UIViewController {
         addViews()
         layout()
         collectionView.reloadData()
-      title = "Photo Gallery"
+        title = "Photo Gallery"
         
     }
     
@@ -93,13 +93,13 @@ class PhotosViewController: UIViewController {
         animatingPhoto.image = image
         animatingPhoto.alpha = 1.0
         animatingPhoto.frame = CGRect(x: imageFrame.origin.x,
-                                          y: imageFrame.origin.y,
-                                          width: imageFrame.width,
-                                          height: imageFrame.height)
+                                      y: imageFrame.origin.y,
+                                      width: imageFrame.width,
+                                      height: imageFrame.height)
         UIView.animate(withDuration: 0.6) {
             self.backView.alpha = 0.5
             self.animatingPhoto.frame.size = CGSize(width: UIScreen.main.bounds.width,
-                                                        height: UIScreen.main.bounds.width)
+                                                    height: UIScreen.main.bounds.width)
             self.animatingPhoto.center = self.view.center
             self.animatingPhoto.layer.cornerRadius = UIScreen.main.bounds.width / 2
         } completion: { _ in
@@ -140,7 +140,7 @@ extension PhotosViewController: UICollectionViewDataSource {
 }
 
 extension PhotosViewController: UICollectionViewDelegateFlowLayout {
-  
+    
     private var inset: CGFloat { return 8}
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -166,24 +166,10 @@ extension PhotosViewController: CustomCellDelegate {
         let rectItem = collectionView.layoutAttributesForItem(at: indexPath)
         let rectInSuperView = collectionView.convert(rectItem?.frame ?? .zero, to: collectionView.superview)
         imageRect = CGRect(x: frameImage.origin.x + rectInSuperView.origin.x,
-                                  y: frameImage.origin.y + rectInSuperView.origin.y,
-                                  width: frameImage.width,
-                                  height: frameImage.height)
+                           y: frameImage.origin.y + rectInSuperView.origin.y,
+                           width: frameImage.width,
+                           height: frameImage.height)
         animateImage(image, imageFrame: imageRect)
     }
 }
 
-
-//extension PhotosViewController: CustomCellDelegate {
-//    func didTapImageInCell(_ image: UIImage?, frameImage: CGRect, indexPath: IndexPath) {
-//        let rectCell = collectionView(PhotosViewController, cellForItemAt: indexPath)
-//
-//        let rectInSuperView = collectionView.
-//        initialImageRect = CGRect(x: frameImage.origin.x,
-//                                  y: frameImage.origin.y + rectInSuperView.origin.y,
-//                                  width: frameImage.width,
-//                                  height: frameImage.height)
-//
-//        animateImage(image, imageFrame: initialImageRect)
-//    }
-//}

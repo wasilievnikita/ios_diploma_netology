@@ -4,14 +4,14 @@ import UIKit
 final class LogInViewController: UIViewController {
     
     private let nc = NotificationCenter.default
-   
+    
     // MARK: - Making login and pass
     
-    let lengthPass = 6
+    let lengthPass = 4
     
     let login = "check"
-    let pass = "123456"
- 
+    let pass = "1234"
+    
     // MARK: - Making elements
     
     private let scrollView: UIScrollView = {
@@ -106,7 +106,7 @@ final class LogInViewController: UIViewController {
         textField.autocapitalizationType = .none
         textField.text = "Недостаточное количество символов"
         textField.isHidden = true
-
+        
         return textField
     }()
     
@@ -154,7 +154,7 @@ final class LogInViewController: UIViewController {
         scrollView.contentInset.bottom = .zero
         scrollView.verticalScrollIndicatorInsets = .zero
     }
-        
+    
     @objc func showProfile() {
         let profileViewCOntroller = ProfileViewController()
         
@@ -166,13 +166,13 @@ final class LogInViewController: UIViewController {
                 textFieldAlert.isHidden = false
             }
         } else if  textFieldPass.text == pass, textFieldLogin.text == login {
-                navigationController?.pushViewController(profileViewCOntroller, animated: true)
-                textFieldAlert.isHidden = true
-                textFieldPass.text = ""
-                textFieldLogin.text = ""
-            } else {
-                showAlert()
-            }
+            navigationController?.pushViewController(profileViewCOntroller, animated: true)
+            textFieldAlert.isHidden = true
+            textFieldPass.text = ""
+            textFieldLogin.text = ""
+        } else {
+            showAlert()
+        }
         
     }
     
@@ -260,10 +260,10 @@ final class LogInViewController: UIViewController {
 // MARK: - Making extensions
 
 extension LogInViewController: UITextFieldDelegate {
-
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-
+        
         if textFieldPass.text!.isEmpty || textFieldLogin.text!.isEmpty {
             shakeAnimationPass()
             shakeAnimationLogin()
